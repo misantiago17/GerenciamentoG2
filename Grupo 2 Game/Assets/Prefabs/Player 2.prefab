@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 50095807994081324}
   - component: {fileID: 61112223638697998}
   - component: {fileID: 114161934845749486}
+  - component: {fileID: 114646398403303156}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Untagged
@@ -128,9 +129,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94d2f5f6d5d98342af2ec825f6685f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1: 0
   Velocity: 5
   JumpVelocity: 5
   JumpCountMax: 2
+--- !u!114 &114646398403303156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1087133459528094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9161090953b85284789a3e6f3b9a43ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212674507017905350
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -167,7 +180,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 49e6c3da8705d3b4e9588e34e7162cbb, type: 3}
-  m_Color: {r: 0.31013536, g: 0.6509434, b: 0.29783732, a: 1}
+  m_Color: {r: 0.9622642, g: 0.6412905, b: 0.013616921, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
