@@ -17,7 +17,7 @@ public class Main : MonoBehaviour {
 		
 	}
 	public void EndGame(bool player1){
-		endText.Text = player1?"Player 1 ganhou":"Player2 2 ganhou";
+		endText.text = player1?"Player 1 ganhou":"Player 2 ganhou";
 		endText.gameObject.SetActive(true);
 		StartCoroutine(End());
 
