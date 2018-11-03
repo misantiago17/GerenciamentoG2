@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224635907780843548}
   - component: {fileID: 212637338624207884}
   - component: {fileID: 50504586503941824}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plataform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1086783669641578}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
