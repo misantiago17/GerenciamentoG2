@@ -52,7 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6795d1d8a4673244c87a86affbaa113e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Plataform: {fileID: 1086783669641578, guid: 29574cf1b407cd24da92579259e8767e, type: 2}
+  PlataformPrefab: {fileID: 1086783669641578, guid: 29574cf1b407cd24da92579259e8767e,
+    type: 2}
 --- !u!114 &114909503696416156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -64,3 +65,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4229d0dc1ff0aa6468d84cd48f25fbc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endText: {fileID: 0}
