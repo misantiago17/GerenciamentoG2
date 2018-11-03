@@ -6,11 +6,14 @@ public class Player : MonoBehaviour {
 
     public float Velocity = 5f;
     public float JumpVelocity = 5f;
+    public int JumpCountMax = 2;
+
+    private int jumpCount;
 
     // Use this for initialization
     void Start ()
     {
-		
+        jumpCount = JumpCountMax;
 	}
 	
 	// Update is called once per frame
@@ -34,12 +37,21 @@ public class Player : MonoBehaviour {
             GetComponent<Rigidbody2D>().velocity = vela;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
         {
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * JumpVelocity, ForceMode2D.Impulse);
+            jumpCount--;
         }
 
         Vector2 vel = new Vector2(totalVel.x, GetComponent<Rigidbody2D>().velocity.y);
         GetComponent<Rigidbody2D>().velocity = vel;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("platform"))
+        {
+            jumpCount = JumpCountMax;
+        }
     }
 }
