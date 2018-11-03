@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     public float Velocity = 5f;
     public float JumpVelocity = 5f;
     public int JumpCountMax = 2;
+    public Main main;
 
     private int jumpCount;
 
@@ -88,6 +89,7 @@ public class Player : MonoBehaviour {
     public void OnTriggerEnter2D(Collider2D collider2D){
         if(collider2D.gameObject.CompareTag("chao"))
         {
+            main.EndGame(player1);
             Destroy(gameObject);
         }
     }
