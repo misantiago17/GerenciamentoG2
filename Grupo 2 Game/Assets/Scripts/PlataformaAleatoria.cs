@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class PlataformaAleatoria : MonoBehaviour {
 
-    public GameObject Plataform;
+    public GameObject PlataformPrefab;
 
     private float _screenWidth;
 
-    private List<GameObject> _presentPlataforms = new List<GameObject>();
+    private List<Plataform> _presentPlataforms = new List<Plataform>();
+
+    public struct Plataform
+    {
+        public GameObject plataforma;
+        public float velocity;
+
+        public Plataform(GameObject gm,float speed)
+        {
+            this.plataforma = gm;
+            this.velocity = speed;
+        }
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -22,12 +34,14 @@ public class PlataformaAleatoria : MonoBehaviour {
 
         if (_presentPlataforms.Count > 0)
         {
-            foreach (GameObject plat in _presentPlataforms)
+            foreach (Plataform plat in _presentPlataforms)
             {
-                if (plat.transform.position.y < -1*Camera.main.rect.height - 150)
+                movePlataformDowards(plat);
+
+                if (plat.plataforma.transform.position.y < -1*Camera.main.rect.height - 20)
                 {
                     _presentPlataforms.Remove(plat);
-                    Destroy(plat);
+                    Destroy(plat.plataforma);
                 }
 
             }
@@ -38,18 +52,17 @@ public class PlataformaAleatoria : MonoBehaviour {
 
     void randomizePlataformPlace()
     {
-        float plataformWidth = Plataform.GetComponent<RectTransform>().rect.width;
+        float plataformWidth = PlataformPrefab.GetComponent<RectTransform>().rect.width;
+        Vector3 spawnPos = transform.TransformPoint(Random.Range(Camera.main.transform.position.x - 20, Camera.main.transform.position.x + 20), Camera.main.rect.height + 10, 0);
+        GameObject newPlataformGO = Instantiate(PlataformPrefab, spawnPos, PlataformPrefab.transform.rotation);
 
-        Vector3 spawnPos = transform.TransformPoint(Random.Range(Camera.main.rect.xMin, _screenWidth ), Camera.main.rect.height + 10, 0);
-        GameObject newPlataform = Instantiate(Plataform, spawnPos, Plataform.transform.rotation);
-
+        Plataform newPlataform = new Plataform(newPlataformGO, Random.Range(150f, 800f));
         _presentPlataforms.Add(newPlataform);
-        movePlataformDowards(newPlataform);
     }
 
-    void movePlataformDowards(GameObject plataform)
+    void movePlataformDowards(Plataform plataform)
     {
-        plataform.transform.position = Vector3.Slerp(plataform.transform.position,new Vector3(plataform.transform.position.x, plataform.transform.position.y - 10, 0), 0);
+        plataform.plataforma.GetComponent<Rigidbody2D>().velocity = -1 * PlataformPrefab.transform.up * (plataform.velocity * Time.fixedDeltaTime);
     }
 
     IEnumerator MovingPlataform()
