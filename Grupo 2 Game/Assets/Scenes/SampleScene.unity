@@ -529,7 +529,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1.15}
+  m_Size: {x: 1.05, y: 1.15}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -1265,7 +1265,7 @@ Prefab:
     - target: {fileID: 61112223638697998, guid: 39090c98be8beb8428f3a737ebbdd51b,
         type: 2}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 61112223638697998, guid: 39090c98be8beb8428f3a737ebbdd51b,
         type: 2}
@@ -1275,7 +1275,7 @@ Prefab:
     - target: {fileID: 61112223638697998, guid: 39090c98be8beb8428f3a737ebbdd51b,
         type: 2}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 1
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 61112223638697998, guid: 39090c98be8beb8428f3a737ebbdd51b,
         type: 2}
@@ -1286,6 +1286,16 @@ Prefab:
         type: 2}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114161934845749486, guid: 39090c98be8beb8428f3a737ebbdd51b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212674507017905350, guid: 39090c98be8beb8428f3a737ebbdd51b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114646398403303156, guid: 39090c98be8beb8428f3a737ebbdd51b, type: 2}
