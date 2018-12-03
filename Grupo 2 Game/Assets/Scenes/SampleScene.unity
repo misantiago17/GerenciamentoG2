@@ -184,7 +184,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4902818026289862, guid: 5304bb32eb99f8f478478a6fd7aba277, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.47
       objectReference: {fileID: 0}
     - target: {fileID: 4902818026289862, guid: 5304bb32eb99f8f478478a6fd7aba277, type: 2}
       propertyPath: m_LocalPosition.y
@@ -430,7 +430,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.05, y: 1.15}
+  m_Size: {x: 1, y: 1.15}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -443,7 +443,7 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 475096634}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 95fcb67324e1c0d4781d4c21bd7bf2fe, type: 2}
   m_CullingMode: 0
@@ -722,39 +722,16 @@ Prefab:
     - target: {fileID: 114200655401067822, guid: b7f19a28263767f4fa72881d90f39012,
         type: 2}
       propertyPath: MinVelocity
-      value: 300
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 114200655401067822, guid: b7f19a28263767f4fa72881d90f39012,
         type: 2}
       propertyPath: MaxVelocity
-      value: 230
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7f19a28263767f4fa72881d90f39012, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &941651735 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1086783669641578, guid: 29574cf1b407cd24da92579259e8767e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1161698011}
---- !u!251 &941651742
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 941651735}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &941739020 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1260633128535086, guid: 39090c98be8beb8428f3a737ebbdd51b,
@@ -876,65 +853,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 50504586503941824, guid: 29574cf1b407cd24da92579259e8767e,
-        type: 2}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 50504586503941824, guid: 29574cf1b407cd24da92579259e8767e,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 212637338624207884, guid: 29574cf1b407cd24da92579259e8767e,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212637338624207884, guid: 29574cf1b407cd24da92579259e8767e,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 212637338624207884, guid: 29574cf1b407cd24da92579259e8767e,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61186327659634116, guid: 29574cf1b407cd24da92579259e8767e,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61186327659634116, guid: 29574cf1b407cd24da92579259e8767e,
-        type: 2}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29574cf1b407cd24da92579259e8767e, type: 2}
@@ -1096,11 +1014,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4689545851582294, guid: 39090c98be8beb8428f3a737ebbdd51b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.35
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 4689545851582294, guid: 39090c98be8beb8428f3a737ebbdd51b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.03
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4689545851582294, guid: 39090c98be8beb8428f3a737ebbdd51b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1233,7 +1151,7 @@ Prefab:
     - target: {fileID: 212674507017905350, guid: 39090c98be8beb8428f3a737ebbdd51b,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 50095807994081324, guid: 39090c98be8beb8428f3a737ebbdd51b,
         type: 2}
@@ -1255,7 +1173,12 @@ Prefab:
       propertyPath: m_GravityScale
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4689545851582294, guid: 39090c98be8beb8428f3a737ebbdd51b, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114646398403303156, guid: 39090c98be8beb8428f3a737ebbdd51b, type: 2}
+    - {fileID: 212674507017905350, guid: 39090c98be8beb8428f3a737ebbdd51b, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 39090c98be8beb8428f3a737ebbdd51b, type: 2}
   m_IsPrefabAsset: 0
