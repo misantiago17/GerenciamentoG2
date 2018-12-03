@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlataformaAleatoria : MonoBehaviour {
 
     public GameObject PlataformPrefab;
+    public float MaxVelocity = 150f;
+    public float MinVelocity = 500f;
 
     private float _screenWidth;
 
@@ -53,10 +55,10 @@ public class PlataformaAleatoria : MonoBehaviour {
     void randomizePlataformPlace()
     {
         float plataformWidth = PlataformPrefab.GetComponent<RectTransform>().rect.width;
-        Vector3 spawnPos = transform.TransformPoint(Random.Range(Camera.main.transform.position.x - 20, Camera.main.transform.position.x + 20), Camera.main.rect.height + 10, 0);
+        Vector3 spawnPos = transform.TransformPoint(Random.Range(Camera.main.transform.position.x - 12, Camera.main.transform.position.x + 12), Camera.main.rect.height + 10, 0);
         GameObject newPlataformGO = Instantiate(PlataformPrefab, spawnPos, PlataformPrefab.transform.rotation);
 
-        Plataform newPlataform = new Plataform(newPlataformGO, Random.Range(150f, 800f));
+        Plataform newPlataform = new Plataform(newPlataformGO, Random.Range(MinVelocity, MaxVelocity));
         _presentPlataforms.Add(newPlataform);
     }
 
@@ -71,7 +73,7 @@ public class PlataformaAleatoria : MonoBehaviour {
         {
             randomizePlataformPlace();
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }
