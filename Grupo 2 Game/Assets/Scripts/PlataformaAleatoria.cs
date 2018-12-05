@@ -10,7 +10,8 @@ public class PlataformaAleatoria : MonoBehaviour {
 
     private float _screenWidth;
 
-    private List<Plataform> _presentPlataforms = new List<Plataform>();
+    [HideInInspector]
+    public List<Plataform> _presentPlataforms = new List<Plataform>();
 
     public struct Plataform
     {
@@ -38,18 +39,31 @@ public class PlataformaAleatoria : MonoBehaviour {
         {
             foreach (Plataform plat in _presentPlataforms)
             {
-                movePlataformDowards(plat);
+               movePlataformDowards(plat);
 
-                if (plat.plataforma.transform.position.y < -1*Camera.main.rect.height - 20)
+                /*if (plat.plataforma.transform.position.y < -1*Camera.main.rect.height - 20)
                 {
-                    _presentPlataforms.Remove(plat);
                     Destroy(plat.plataforma);
-                }
+                    _presentPlataforms.Remove(plat);
+                }*/
 
             }
         }
         
 	}
+
+    public void removePlataformFromGO(GameObject go)
+    {
+        foreach (Plataform plat in _presentPlataforms)
+        {
+            if(plat.plataforma == go)
+            {
+                _presentPlataforms.Remove(plat);
+                break;
+            }
+        }
+
+    }
 
 
     void randomizePlataformPlace()
