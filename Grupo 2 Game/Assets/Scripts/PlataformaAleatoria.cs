@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlataformaAleatoria : MonoBehaviour {
 
     public GameObject PlataformPrefab;
-    public float MaxVelocity = 500f;
-    public float MinVelocity = 150f;
+    public float MaxVelocity = 10f;
+    public float MinVelocity = 4f;
 
     private float _screenWidth;
 
