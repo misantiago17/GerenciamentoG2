@@ -288,6 +288,9 @@ MonoBehaviour:
   JumpVelocity: 70
   JumpCountMax: 2
   main: {fileID: 1101779367}
+  Player1: {fileID: 649884229}
+  Player2: {fileID: 475096634}
+  nofriction: {fileID: 6200000, guid: 180a12c67a7c1e44790e694aefeeef0d, type: 2}
 --- !u!61 &475096636
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -528,6 +531,9 @@ MonoBehaviour:
   JumpVelocity: 70
   JumpCountMax: 2
   main: {fileID: 1101779367}
+  Player1: {fileID: 649884229}
+  Player2: {fileID: 475096634}
+  nofriction: {fileID: 6200000, guid: 180a12c67a7c1e44790e694aefeeef0d, type: 2}
 --- !u!61 &649884231
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -891,7 +897,7 @@ Prefab:
     - target: {fileID: 224635907780843548, guid: 29574cf1b407cd24da92579259e8767e,
         type: 2}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 9.825
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29574cf1b407cd24da92579259e8767e, type: 2}

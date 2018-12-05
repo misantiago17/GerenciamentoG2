@@ -10,18 +10,33 @@ public class Player : MonoBehaviour {
     public int JumpCountMax = 2;
     public Main main;
 
+    public GameObject Player1;
+    public GameObject Player2;
+
+    public PhysicsMaterial2D nofriction;
+
     private int jumpCount;
     private Vector2 totalVel;
+    private bool right;
+
+    private bool knocked;
+    private bool canAttack;
 
     // Use this for initialization
     void Start ()
     {
         jumpCount = JumpCountMax;
+        canAttack = true;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if(knocked)
+        {
+            return;
+        }
+
         totalVel = Vector2.zero;
 
         if (player1)
@@ -93,6 +108,7 @@ public class Player : MonoBehaviour {
     {
         if(collision.gameObject.CompareTag("platform"))
         {
+            GetComponent<BoxCollider2D>().sharedMaterial = null;
             jumpCount = JumpCountMax;
             GetComponent<Animator>().SetBool("Jumping", false);
         }
@@ -107,7 +123,20 @@ public class Player : MonoBehaviour {
 
     public void Attack()
     {
-        GetComponent<Animator>().SetBool("Attack", true);
+        if(canAttack)
+        {
+            GetComponent<Animator>().SetBool("Attack", true);
+            if (player1)
+            {
+                AddExplosionForce(Player2, right ? Vector2.right : Vector2.left);
+            }
+            else
+            {
+                AddExplosionForce(Player1, right ? Vector2.right : Vector2.left);
+            }
+            canAttack = false;
+            StartCoroutine(ResetAttack());
+        }
     }
 
     public void EndAttack()
@@ -127,6 +156,7 @@ public class Player : MonoBehaviour {
         totalVel += Vector2.left * Velocity;
         GetComponent<Animator>().SetBool("Running", true);
         GetComponent<Animator>().SetBool("Right", false);
+        right = false;
     }
 
     public void RunRight()
@@ -134,6 +164,7 @@ public class Player : MonoBehaviour {
         totalVel += Vector2.right * Velocity;
         GetComponent<Animator>().SetBool("Running", true);
         GetComponent<Animator>().SetBool("Right", true);
+        right = true;
     }
 
     public void Stop()
@@ -141,5 +172,43 @@ public class Player : MonoBehaviour {
         Vector2 vela = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
         GetComponent<Rigidbody2D>().velocity = vela;
         GetComponent<Animator>().SetBool("Running", false);
+    }
+
+    public void AddExplosionForce(GameObject enemy, Vector2 dir)// float explosionForce, Vector3 explosionPosition, float explosionRadius, float upliftModifier)
+    {
+        if (enemy.transform.position.y >= transform.position.y - 30)
+        {
+            if((dir == Vector2.right && enemy.transform.position.x > transform.position.x) ||
+               (dir == Vector2.left && enemy.transform.position.x < transform.position.x))
+            {
+                if (Vector2.Distance(enemy.transform.position, transform.position) < 2)
+                {
+                    enemy.GetComponent<Player>().ReceiveAttack(dir); 
+                }
+            }
+        }        
+    }
+
+    public void ReceiveAttack(Vector2 dir)
+    {
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        knocked = true;
+        Vector2 force = Vector2.up * 70 + dir * 50;
+        GetComponent<BoxCollider2D>().sharedMaterial = nofriction;
+        GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+
+        StartCoroutine(ResetKnock());
+    }
+
+    IEnumerator ResetKnock()
+    {
+        yield return new WaitForSeconds(0.5f);
+        knocked = false;
+    }
+
+    IEnumerator ResetAttack()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canAttack = true;
     }
 }
