@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
     public Main main;
 
     private int jumpCount;
+    private Vector2 totalVel;
 
     // Use this for initialization
     void Start ()
@@ -21,72 +22,71 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if(player1){
-            Vector2 totalVel = Vector2.zero;
+        totalVel = Vector2.zero;
+
+        if (player1)
+        {
             //ir para a esquerda
             if(Input.GetKey(KeyCode.A))
             {
-                totalVel += Vector2.left * Velocity;
+                RunLeft();
             }
             //ir para a direita
             else if (Input.GetKey(KeyCode.D))
             {
-                totalVel += Vector2.right * Velocity;
+                RunRight();
             }
             //parar
             else 
             {
-                Vector2 vela = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
-                GetComponent<Rigidbody2D>().velocity = vela;
+                Stop();
             }
 
+            //Pula
             if (Input.GetKeyDown(KeyCode.W) && jumpCount > 0)
             {
-                GetComponent<Rigidbody2D>().AddForce(Vector2.up * JumpVelocity, ForceMode2D.Impulse);
-                jumpCount--;
+                Jump();
             }
 
+            //Ataca
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                //todo: attack
+                Attack();
             }
-
-            Vector2 vel = new Vector2(totalVel.x, GetComponent<Rigidbody2D>().velocity.y);
-            GetComponent<Rigidbody2D>().velocity = vel;
         }
-        else{
-            Vector2 totalVel = Vector2.zero;
+        else
+        {
             //ir para a esquerda
             if(Input.GetKey(KeyCode.LeftArrow))
             {
-                totalVel += Vector2.left * Velocity;
+                RunLeft();
             }
             //ir para a direita
             else if (Input.GetKey(KeyCode.RightArrow))
             {
-                totalVel += Vector2.right * Velocity;
+                RunRight();
             }
             //parar
-            else 
+            else
             {
-                Vector2 vela = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
-                GetComponent<Rigidbody2D>().velocity = vela;
+                Stop();
             }
 
+            //Pula
             if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount > 0)
             {
-                GetComponent<Rigidbody2D>().AddForce(Vector2.up * JumpVelocity, ForceMode2D.Impulse);
-                jumpCount--;
+                Jump();
             }
 
+            //Ataca
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                //todo: attack
+                Attack();
             }
-
-            Vector2 vel = new Vector2(totalVel.x, GetComponent<Rigidbody2D>().velocity.y);
-            GetComponent<Rigidbody2D>().velocity = vel;
         }
+
+        Vector2 vel = new Vector2(totalVel.x, GetComponent<Rigidbody2D>().velocity.y);
+        GetComponent<Rigidbody2D>().velocity = vel;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -94,6 +94,7 @@ public class Player : MonoBehaviour {
         if(collision.gameObject.CompareTag("platform"))
         {
             jumpCount = JumpCountMax;
+            GetComponent<Animator>().SetBool("Jumping", false);
         }
     }
     public void OnTriggerEnter2D(Collider2D collider2D){
@@ -102,5 +103,43 @@ public class Player : MonoBehaviour {
             main.EndGame(player1);
             Destroy(gameObject);
         }
+    }
+
+    public void Attack()
+    {
+        GetComponent<Animator>().SetBool("Attack", true);
+    }
+
+    public void EndAttack()
+    {
+        GetComponent<Animator>().SetBool("Attack", false);
+    }
+
+    public void Jump()
+    {
+        GetComponent<Rigidbody2D>().AddForce(Vector2.up * JumpVelocity, ForceMode2D.Impulse);
+        jumpCount--;
+        GetComponent<Animator>().SetBool("Jumping", true);
+    }
+
+    public void RunLeft()
+    {
+        totalVel += Vector2.left * Velocity;
+        GetComponent<Animator>().SetBool("Running", true);
+        GetComponent<Animator>().SetBool("Right", false);
+    }
+
+    public void RunRight()
+    {
+        totalVel += Vector2.right * Velocity;
+        GetComponent<Animator>().SetBool("Running", true);
+        GetComponent<Animator>().SetBool("Right", true);
+    }
+
+    public void Stop()
+    {
+        Vector2 vela = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y);
+        GetComponent<Rigidbody2D>().velocity = vela;
+        GetComponent<Animator>().SetBool("Running", false);
     }
 }
