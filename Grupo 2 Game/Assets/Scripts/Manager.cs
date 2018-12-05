@@ -17,7 +17,7 @@ public class Manager : MonoBehaviour {
 
     public void changeScene(string scene)
     {
-		SceneManager.LoadScene("SampleScene");
+		SceneManager.LoadScene(scene);
 	}
 
     public void ActivateTutorial(bool active)
