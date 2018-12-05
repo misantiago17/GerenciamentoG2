@@ -40,10 +40,15 @@ public class Player : MonoBehaviour {
                 GetComponent<Rigidbody2D>().velocity = vela;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
+            if (Input.GetKeyDown(KeyCode.W) && jumpCount > 0)
             {
                 GetComponent<Rigidbody2D>().AddForce(Vector2.up * JumpVelocity, ForceMode2D.Impulse);
                 jumpCount--;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                //todo: attack
             }
 
             Vector2 vel = new Vector2(totalVel.x, GetComponent<Rigidbody2D>().velocity.y);
@@ -72,6 +77,11 @@ public class Player : MonoBehaviour {
             {
                 GetComponent<Rigidbody2D>().AddForce(Vector2.up * JumpVelocity, ForceMode2D.Impulse);
                 jumpCount--;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                //todo: attack
             }
 
             Vector2 vel = new Vector2(totalVel.x, GetComponent<Rigidbody2D>().velocity.y);
